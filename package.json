@@ -1,0 +1,26 @@
+{
+  "name": "graphql-study-lookup",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Week 1 scaffold: GraphQL API gateway with Student/Course gRPC services",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/gateway/server.js",
+    "start:student": "node src/services/student.js",
+    "start:course": "node src/services/course.js",
+    "dev": "concurrently -k -n student,course,graphql \"npm run start:student\" \"npm run start:course\" \"npm start\"",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "@grpc/grpc-js": "^1.13.0",
+    "@grpc/proto-loader": "^0.7.0",
+    "graphql": "^16.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

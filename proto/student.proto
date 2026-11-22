@@ -1,0 +1,11 @@
+syntax = "proto3";
+package study;
+service StudentService {
+  rpc ListStudents (Empty) returns (StudentList);
+  rpc GetStudent (StudentId) returns (StudentReply);
+}
+message Empty {}
+message StudentId { string id = 1; }
+message Student { string id = 1; string name = 2; string email = 3; }
+message StudentList { repeated Student students = 1; }
+message StudentReply { Student student = 1; }

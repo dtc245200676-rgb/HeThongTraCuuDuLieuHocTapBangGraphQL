@@ -1,0 +1,15 @@
+syntax = "proto3";
+package study;
+service CourseService {
+  rpc ListCourses (Empty) returns (CourseList);
+  rpc GetCourse (CourseId) returns (CourseReply);
+  rpc GetEnrollmentsByStudent (StudentId) returns (EnrollmentList);
+}
+message Empty {}
+message CourseId { string id = 1; }
+message StudentId { string id = 1; }
+message Course { string id = 1; string title = 2; int32 credits = 3; }
+message Enrollment { string studentId = 1; string courseId = 2; }
+message CourseList { repeated Course courses = 1; }
+message CourseReply { Course course = 1; }
+message EnrollmentList { repeated Enrollment enrollments = 1; }
